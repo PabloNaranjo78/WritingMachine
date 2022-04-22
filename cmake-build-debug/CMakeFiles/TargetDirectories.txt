@@ -1,0 +1,3 @@
+/home/naranjo/Documentos/GitHub/WritingMachine/cmake-build-debug/CMakeFiles/WritingMachine.dir
+/home/naranjo/Documentos/GitHub/WritingMachine/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/naranjo/Documentos/GitHub/WritingMachine/cmake-build-debug/CMakeFiles/rebuild_cache.dir
