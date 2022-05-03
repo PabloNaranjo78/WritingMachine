@@ -1,4 +1,3 @@
-import tkinter
 from tkinter import *
 from tkinter import filedialog
 
@@ -34,7 +33,7 @@ class MainWindow:
                                yscrollcommand=self.editor_text_Scrollbar.set)
         self.numberLine.insert(1.0, "1")
         self.numberLine.config(state=DISABLED)
-        self.numberLine.place(x=1, y=20)
+        self.numberLine.place(x=1, y=40)
 
         self.editor_text = Text(self.canvas, width=104, height=21, font=('Lucida Sans Typewriter', 11),
                                 yscrollcommand=self.editor_text_Scrollbar.set)
@@ -46,10 +45,23 @@ class MainWindow:
 
         self.editor_text_Scrollbar.config(command=self.multipleScroll)
 
-        self.editor_text.place(x=40, y=20)
-        self.editor_text_Scrollbar.place(x=980, y=20, height=361)
+        self.editor_text.place(x=40, y=40)
+        self.editor_text_Scrollbar.place(x=980, y=40, height=361)
 
         self.canvas.bind_all("<MouseWheel>", self.scroll)
+
+        self.run_button = Button(self.canvas,text="Run", width=8, height=1, bg='#4C5052', fg='white')
+        self.run_button.place(x=920, y=7)
+
+        self.console_text = Text(self.canvas, width=104, height=12, font=('Lucida Sans Typewriter', 11))
+        self.console_text.insert(1.0, ">")
+        self.console_text.config(state=DISABLED)
+        self.console_text.place(x=40, y=410)
+        self.console_text.config(bg='#2B2B2B', fg='white')
+
+        self.console_text_Scrollbar = Scrollbar(self.canvas)
+        self.console_text_Scrollbar.config(command=self.console_text.yview)
+        self.console_text_Scrollbar.place(x=980, y=410, height=208)
 
     def multipleScroll(self, *args):
         self.editor_text.yview(*args)
@@ -72,6 +84,7 @@ class MainWindow:
         print("guardar")
 
     def keyPress(self, event):
+        self.updateScroll()
         self.updateLines()
 
     def updateLines(self):
@@ -86,9 +99,8 @@ class MainWindow:
                 self.numberLine.insert(END, str(i))
             else:
                 self.numberLine.insert(END, "\n" + str(i))
-        self.numberLine.config(state=DISABLED)
-        self.movementScroll = self.editor_text.yview()[0]
-        self.numberLine.yview("moveto", self.movementScroll)
+        self.updateScroll()
+
 
     def loadFile(self, file_name):
         file = open(file_name, "r", encoding="utf-8")
@@ -96,3 +108,14 @@ class MainWindow:
         self.editor_text.insert(END, file.read())
         file.close()
         self.updateLines()
+
+    def updateScroll(self):
+        self.numberLine.config(state=DISABLED)
+        self.movementScroll = self.editor_text.yview()[0]
+        self.numberLine.yview("moveto", self.movementScroll)
+
+    def addTextToConsole(self, text):
+        self.console_text.config(state=NORMAL)
+        self.console_text.insert(END, text)
+        self.console_text.config(state=DISABLED)
+        self.console_text.see(END)
