@@ -50,7 +50,7 @@ class MainWindow:
 
         self.canvas.bind_all("<MouseWheel>", self.scroll)
 
-        self.run_button = Button(self.canvas,text="Run", width=8, height=1, bg='#4C5052', fg='white')
+        self.run_button = Button(self.canvas,text="Run", width=8, height=1, bg='#4C5052', fg='white',command=self.run)
         self.run_button.place(x=920, y=7)
 
         self.console_text = Text(self.canvas, width=104, height=12, font=('Lucida Sans Typewriter', 11))
@@ -73,7 +73,7 @@ class MainWindow:
         return 'break'
 
     def openFileMenu(self):
-        filetypes = (("Text files", "*.txt"), ("All files", "*.*"))
+        filetypes = (("WM File","*.japi"),("All files", "*.*"))
 
         self.file_name = filedialog.askopenfilename(initialdir="/", title="Select file", filetypes=filetypes)
         self.master.title("Writing machine IDE - " + self.file_name)
@@ -81,7 +81,13 @@ class MainWindow:
         self.loadFile(self.file_name)
 
     def saveFile(self):
-        print("guardar")
+        self.file_name = filedialog.asksaveasfilename(initialdir="/", title="Save file", filetypes=(("WM File","*.japi"), ("All files", "*.*")))
+        self.file_name = self.file_name + ".japi"
+        self.master.title("Writing machine IDE - " + self.file_name)
+        file = open(self.file_name,"x")
+        file.write(self.editor_text.get(1.0,END))
+        file.close()
+
 
     def keyPress(self, event):
         self.updateScroll()
@@ -119,3 +125,6 @@ class MainWindow:
         self.console_text.insert(END, text)
         self.console_text.config(state=DISABLED)
         self.console_text.see(END)
+
+    def run(self):
+        print(self.editor_text.get(1.0, END))

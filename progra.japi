@@ -1,0 +1,35 @@
+class MainWindow:
+
+    def __init__(self, master):
+        self.file_name = ""
+        self.lineCounter = 0
+        self.movementScroll = 0.0
+        self.master = master
+        self.master.title("Writing machine IDE")
+        self.master.geometry("1000x650+0+0")
+        self.master.resizable(False, False)
+        self.master.iconbitmap("Images/icon.ico")
+        self.master.configure(background="white")
+        self.canvas = Canvas(master, width=1000, height=650, highlightthickness=0, relief='ridge')
+        self.canvas.place(x=0, y=0)
+        self.canvas.configure(bg='#3C3F41')
+
+        self.menu_bar = Menu(self.master, background='blue', fg='white')
+        self.file_menu = Menu(self.menu_bar)
+        self.file_menu.add_command(label="Open...", command=self.openFileMenu)
+        self.file_menu.add_command(label="Save", command=self.saveFile)
+
+        self.menu_bar.add_cascade(label="File", menu=self.file_menu)
+        self.master.config(menu=self.menu_bar)
+
+        self.editor_text_Scrollbar = Scrollbar(self.canvas)
+
+        self.numberLine = Text(self.canvas, width=4, height=21, bg='#313335', fg="#A2A1A1",
+                               font=('Lucida Sans Typewriter', 11),
+                               yscrollcommand=self.editor_text_Scrollbar.set)
+        self.numberLine.insert(1.0, "1")
+        self.numberLine.config(state=DISABLED)
+        self.numberLine.place(x=1, y=40)
+
+        self.editor_text = Text(self.canvas, width=104, height=21, font=('Lucida Sans Typewriter', 11),
+                                yscrollcommand=self.editor_text_Scrollbar.set)
