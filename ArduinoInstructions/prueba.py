@@ -26,6 +26,6 @@ for i in range(2):
     time.sleep(1)
     board.stepper_write(60,-steps)
     time.sleep(1)
-    for j in range(180):
-        board.servo_write(12,j)
-        time.sleep(0.1)
+    board.servo_write(12,180)
+    board.servo_write(12,90)
+    board.servo_write(12,+)
