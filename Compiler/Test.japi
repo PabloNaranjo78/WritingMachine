@@ -1,0 +1,9 @@
+PARA func_1 [arg1, arg2]
+	Def(var1, 2);
+
+	Add(var1);
+
+	ContinueRight 8;
+
+	PrintLine("Imprimiendo el valor de ", var1, " termina este proyecto");
+FIN
