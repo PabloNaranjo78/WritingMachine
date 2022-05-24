@@ -7,25 +7,42 @@ pinsArriba = [2,3,5,6]
 board = pymata4.Pymata4()
 board.set_pin_mode_servo(12)
 
-board.set_pin_mode_stepper(steps, pinsArriba)
+def moverX(st):
+    board.set_pin_mode_stepper(steps, pinsArriba)
+    board.stepper_write(70, st)
+    time.sleep(1)
 
-for i in range(2):
-    board.stepper_write(100,steps)
+def moverY(st):
+    board.set_pin_mode_stepper(steps, pinsAbajo)
+    board.stepper_write(70, st)
     time.sleep(1)
-    board.stepper_write(100,-steps)
-    time.sleep(1)
-    board.servo_write(12,0)
-    board.servo_write(12,90)
-    board.servo_write(12,180)
 
+def color(i):
+    board.servo_write(12, (i*90))
+    time.sleep(0.5)
 
-board.set_pin_mode_stepper(steps, pinsAbajo)
-board.set_pin_mode_servo(12)
-for i in range(2):
-    board.stepper_write(60,steps)
-    time.sleep(1)
-    board.stepper_write(60,-steps)
-    time.sleep(1)
-    for j in range(180):
-        board.servo_write(12,j)
-        time.sleep(0.1)
+def cuadrado(a):
+    color(a)
+    moverX(steps)
+    moverY(steps)
+    moverX(-steps)
+    moverY(-steps)
+    color(1)
+def inicial():
+    moverX(-steps)
+    moverY(-steps)
+    #color(1)
+
+def main():
+    inicial()
+    for i in range (0,250,10):
+        moverX(i)
+        #color(0)
+        moverY(steps)
+        #color(1)
+        moverY(-steps)
+#main()
+
+cuadrado(0)
+cuadrado(2)
+cuadrado(2)
