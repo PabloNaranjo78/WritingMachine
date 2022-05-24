@@ -2,7 +2,7 @@ from lexer import Lexer
 
 
 text_input = """
-let a = 5;
+Def(nombrevariable, 15);
 """
 
 def lexer(text_input):

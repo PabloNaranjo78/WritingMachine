@@ -29,9 +29,17 @@ def cuadrado(a):
     moverY(-steps)
     color(1)
 def inicial():
+    color(1)
     moverX(-steps)
     moverY(-steps)
-    #color(1)
+    print("Inicio")
+
+
+def final():
+    color(1)
+    moverX(steps)
+    moverY(steps)
+    print("Final")
 
 def main():
     inicial()
@@ -41,8 +49,15 @@ def main():
         moverY(steps)
         #color(1)
         moverY(-steps)
-#main()
 
+inicial()
 cuadrado(0)
+print("Lista 1")
+time.sleep(2)
 cuadrado(2)
+print("Lista 2")
+time.sleep(2)
 cuadrado(2)
+print("Lista 3")
+time.sleep(2)
+final()
