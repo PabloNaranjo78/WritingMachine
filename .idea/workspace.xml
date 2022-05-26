@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b63e41f-21d4-4ddb-8805-0f54711537e9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Compiler/interprete/ast.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Compiler/interprete/lexer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Compiler/interprete/parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/WritingMachine.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/WritingMachine.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArduinoInstructions/arduino/arduino.ino" beforeDir="false" afterPath="$PROJECT_DIR$/ArduinoInstructions/arduino/arduino.ino" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ArduinoInstructions/prueba.py" beforeDir="false" afterPath="$PROJECT_DIR$/ArduinoInstructions/prueba.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Compiler/lexer/lexer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Compiler/lexer/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Compiler/interprete/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArduinoInstructions/prueba2.py" beforeDir="false" afterPath="$PROJECT_DIR$/ArduinoInstructions/prueba2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +41,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
-  <component name="RunManager" selected="Python.prueba">
+  <component name="RunManager" selected="Python.prueba2">
     <configuration name="MainWindow" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="WritingMachine" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -131,8 +130,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="prueba2" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="WritingMachine" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ArduinoInstructions" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ArduinoInstructions/prueba2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.prueba2" />
         <item itemvalue="Python.prueba" />
         <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.main" />
@@ -160,7 +182,9 @@
       <workItem from="1652996070474" duration="7676000" />
       <workItem from="1653070491171" duration="901000" />
       <workItem from="1653173236749" duration="1376000" />
-      <workItem from="1653331243914" duration="11739000" />
+      <workItem from="1653331243914" duration="11966000" />
+      <workItem from="1653514788158" duration="8475000" />
+      <workItem from="1653587081066" duration="594000" />
     </task>
     <servers />
   </component>
@@ -172,8 +196,9 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/WritingMachine$MainWindow.coverage" NAME="MainWindow Coverage Results" MODIFIED="1653331899477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/GUI" />
+    <SUITE FILE_PATH="coverage/WritingMachine$prueba2.coverage" NAME="prueba2 Coverage Results" MODIFIED="1653521628540" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ArduinoInstructions" />
     <SUITE FILE_PATH="coverage/WritingMachine$main.coverage" NAME="main Coverage Results" MODIFIED="1653331906173" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/WritingMachine$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1653344210593" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Compiler/lexer" />
-    <SUITE FILE_PATH="coverage/WritingMachine$prueba.coverage" NAME="prueba Coverage Results" MODIFIED="1653355902912" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ArduinoInstructions" />
+    <SUITE FILE_PATH="coverage/WritingMachine$prueba.coverage" NAME="prueba Coverage Results" MODIFIED="1653517623089" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/ArduinoInstructions" />
   </component>
 </project>
