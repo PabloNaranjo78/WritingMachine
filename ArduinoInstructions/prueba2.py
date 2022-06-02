@@ -1,8 +1,9 @@
 # Importing Libraries
 import serial
 import time
-arduino = serial.Serial(port='COM5', baudrate=115200, timeout=.1)
+arduino = serial.Serial(port='COM6', baudrate=115200, timeout=.1)
 traduccion = []
+
 def write_read(x):
     time.sleep(1)
     arduino.write(bytes(x, 'utf-8'))
@@ -43,6 +44,7 @@ def send_instruccion(instrucciones):
             traduccion.append("%posicion%"+posXY[0]+"%-"+posXY[1])
         else:
             traduccion.append("%apagar%0")
+
 instrucciones = ["iniciar", "UseColor 1", "ContinueRight 250", "ContinueUp 50", "ContinueLeft 250", "UseColor 2", "ContinueUp 50","ContinueRight 250", "ContinueUp 50", "ContinueLeft 250", "ContinueUp 50","ContinueRight 250", "ContinueDown 250","ContinueLeft 250","apagar", "apagar"]
 instrucciones2 = ["iniciar", "UseColor 2", "ContinueRight 250", "Up", "ContinueLeft 250", "Down", "ContinueRight 250", "Up", "ContinueLeft 250", "apagar", "apagar"]
 instrucciones3 = ["iniciar", "PosX 100", "PosY 100", "PosY 50", "PosX 50", "Beginning", "apagar", "apagar"]
@@ -54,8 +56,4 @@ print(traduccion)
 
 for i in traduccion:
     print (write_read(i))
-"""while True:
-    num = input("Enter a number: ") # Taking input from user
-    value = write_read(num)
-    #print(value) # printing the value"""
 
