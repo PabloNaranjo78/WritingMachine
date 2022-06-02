@@ -60,16 +60,39 @@ def circulo(r):
                 instrucciones5.append("Pos("+ str(x) + "," + str(y) + ")")
     instrucciones5.append("Beginning")
 
-for c in range(100, 0, -10):
-    circulo(c)
+def prueba2():
+    i = 0
+    for c in range(230, 0, -20):
+        cuadrado(c,i*20)
+        i = i+1
 
-instrucciones5.append("apagar")
-instrucciones5.append("apagar")
+def prueba():
+    for c in range(100, 0, -10):
+        circulo(c)
 
-send_instruccion(instrucciones5)
+    instrucciones5.append("apagar")
+    instrucciones5.append("apagar")
 
-print(traduccion)
+def cuadrado(size, ang):
+    print(size)
+    instrucciones5.append("Pos(" + str(230-size-ang) + "," + str(230-size) + ")")
+    instrucciones5.append("Pos(" + str(230-size) + "," + str(size+ang) + ")")
+    instrucciones5.append("Pos(" + str(size+ang) + "," + str(size) + ")")
+    instrucciones5.append("Pos(" + str(size) + "," + str(230-size-ang) + ")")
+    instrucciones5.append("Pos(" + str(230-size-ang) + "," + str(230-size) + ")")
 
-for i in traduccion:
-    print (write_read(i))
 
+def imprimir():
+    prueba2()
+    instrucciones5.append("Up")
+    instrucciones5.append("Beginning")
+    instrucciones5.append("apagar")
+    instrucciones5.append("apagar")
+    send_instruccion(instrucciones5)
+
+    print(traduccion)
+
+    for i in traduccion:
+        print (write_read(i))
+
+imprimir()

@@ -23,14 +23,30 @@ def circulo(r):
             if (((x-115)*(x-115)) + ((y)*(y)) == r*r):
                 print("(" + str(x) + "," + str(y) + ")")
                 lista.append([x,y])
-circulo(100)
-circulo(90)
-circulo(80)
-circulo(70)
-circulo(60)
-circulo(50)
-circulo(40)
-circulo(30)
-circulo(20)
-circulo(10)
-dibujo()
+
+def prueba1():
+    for c in range(100, 0, -10):
+        circulo(c)
+    dibujo()
+
+def cuadrado(size,ang):
+    print(size)
+    lista.append([230-size-ang,230-size])
+    lista.append([230-size, size+ang])
+    lista.append([size+ang, size])
+    lista.append([size, 230-size-ang])
+    lista.append([230-size-ang,230-size])
+
+
+def prueba2():
+    i = 0
+    for c in range(230, 0, -20):
+        cuadrado(c,i*20)
+        i = i+1
+    dibujo()
+
+prueba2()
+
+
+
+
