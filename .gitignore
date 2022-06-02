@@ -281,3 +281,9 @@ cython_debug/
 .idea/misc.xml
 .idea/WritingMachine.iml
 .idea/workspace.xml
+.idea/misc.xml
+.idea/WritingMachine.iml
+.idea/workspace.xml
+*.xml
+*.xml
+*.iml
