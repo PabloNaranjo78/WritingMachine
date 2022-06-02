@@ -15,6 +15,7 @@
 
 #Agregado por juan
 .idea/
+.idea/**
 
 # AWS User-specific
 .idea/**/aws.xml
