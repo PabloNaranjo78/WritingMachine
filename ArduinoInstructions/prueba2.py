@@ -47,8 +47,24 @@ instrucciones = ["iniciar", "UseColor 1", "ContinueRight 250", "ContinueUp 50", 
 instrucciones2 = ["iniciar", "UseColor 2", "ContinueRight 250", "Up", "ContinueLeft 250", "Down", "ContinueRight 250", "Up", "ContinueLeft 250", "apagar", "apagar"]
 instrucciones3 = ["iniciar", "PosX 100", "PosY 100", "PosY 50", "PosX 50", "Beginning", "apagar", "apagar"]
 
-instrucciones4 = ["iniciar", "Pos(100,100)", "Beginning", "Beginning","apagar", "apagar"]
-send_instruccion(instrucciones4)
+instrucciones4 = ["iniciar", "Pos(100,100)", "Beginning","apagar", "apagar"]
+instrucciones5=["iniciar", "Down"]
+
+def circulo(r):
+    for x in range(230):
+        for y in range(230):
+            if ((x-115)*(x-115) + (y)*(y) == r*r):
+                print("(" + str(x) + "," + str(y) + ")")
+                instrucciones5.append("Pos("+ str(x) + "," + str(y) + ")")
+    instrucciones5.append("Beginning")
+
+for c in range(100, 0, -10):
+    circulo(c)
+
+instrucciones5.append("apagar")
+instrucciones5.append("apagar")
+
+send_instruccion(instrucciones5)
 
 print(traduccion)
 

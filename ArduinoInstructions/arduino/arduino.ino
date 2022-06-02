@@ -199,10 +199,30 @@ void lineaY(int pos){
   positions[1] = pos + motorY.currentPosition();
 }
 void mover(int posX, int posY){
+  if (posX == 0){
+    motorX.disableOutputs();
+  } else {
+    motorX.enableOutputs();
+  }
+  if (posX == 0){
+    motorX.disableOutputs();
+  } else {
+    motorX.enableOutputs();
+  }
   positions[0] = posX + motorX.currentPosition();
   positions[1] = posY + motorY.currentPosition();
 }
 void posicion(int posX, int posY){
+  if (posX == 0){
+    motorX.disableOutputs();
+  } else {
+    motorX.enableOutputs();
+  }
+  if (posX == 0){
+    motorX.disableOutputs();
+  } else {
+    motorX.enableOutputs();
+  }
   positions[0] = posX;
   positions[1] = posY;
 }
