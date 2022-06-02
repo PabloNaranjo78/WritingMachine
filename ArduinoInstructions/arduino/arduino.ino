@@ -25,6 +25,11 @@ class ComandoLapicero{
 
         int Xmov = 0;
         int Ymov = 0;
+        int Xpos = 0;
+        int Ypos = 0;
+        
+            String XposTemp = "";
+            String YposTemp = "";
         String tipo = "";
         String ultimoColor = "1";
 
@@ -32,6 +37,8 @@ class ComandoLapicero{
         void cargarComando(String comando){
             String XmovTemp = "";
             String YmovTemp = "";
+            XposTemp = "";
+            YposTemp = "";
             String colorTemp = "1";
             int contadorP = 0;
             tipo = "";
@@ -57,12 +64,28 @@ class ComandoLapicero{
                           ultimoColor = colorTemp;
                         }
                     }
+                } else if (tipo == "posicion"){
+                  if (contadorP<3){
+                        XposTemp+= comando.charAt(i);
+                    }else if (contadorP<4){
+                        YposTemp+= comando.charAt(i);
+                    }
                 }
             }
 
             Xmov = XmovTemp.toInt();
             Ymov = YmovTemp.toInt();
             color = colorTemp.toInt();
+            if (XposTemp == "f"){
+              Xpos = motorX.currentPosition();
+            } else {
+              Xpos = XposTemp.toInt();
+            }
+            if (YposTemp == "f"){
+              Ypos = motorY.currentPosition();
+            } else {
+              Ypos = YposTemp.toInt();
+            }
         }
 };
 
@@ -98,14 +121,19 @@ void loop() {
   comandoLapicero.cargarComando(tempMsg);
   //Serial.println(comandoLapicero.Ymov);
   delay(1);
-  Serial.println(comandoLapicero.ultimoColor);
+  Serial.println(comandoLapicero.Xpos);
   if (comandoLapicero.tipo == "mover"){
     motorX.enableOutputs();
     motorY.enableOutputs();
-    diagonal(comandoLapicero.Xmov,comandoLapicero.Ymov);
+    mover(comandoLapicero.Xmov,comandoLapicero.Ymov);
     steppers.moveTo(positions);
   } else  if (comandoLapicero.tipo == "color"){
     colores(comandoLapicero.color);
+  } else  if (comandoLapicero.tipo == "posicion"){
+    motorX.enableOutputs();
+    motorY.enableOutputs();
+    posicion(comandoLapicero.Xpos, comandoLapicero.Ypos);
+    steppers.moveTo(positions);
   }else{
     motorX.disableOutputs();
     motorY.disableOutputs();
@@ -170,9 +198,13 @@ void lineaY(int pos){
   positions[0] = 0 + motorX.currentPosition();
   positions[1] = pos + motorY.currentPosition();
 }
-void diagonal(int posX, int posY){
+void mover(int posX, int posY){
   positions[0] = posX + motorX.currentPosition();
   positions[1] = posY + motorY.currentPosition();
+}
+void posicion(int posX, int posY){
+  positions[0] = posX;
+  positions[1] = posY;
 }
 
 void colores(int x){
