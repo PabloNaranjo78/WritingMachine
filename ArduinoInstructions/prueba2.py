@@ -9,6 +9,11 @@ def write_read(x):
     time.sleep(1)
     print(arduino.readline())
 
+def obtenerPosXY(posString):
+    posX = posString.split("Pos")[1].split(",")[0].replace("(", "")
+    posY = posString.split("Pos")[1].split(",")[1].replace(")", "")
+    return [posX,posY]
+
 def send_instruccion(instrucciones):
     for ins in instrucciones:
         div = ins.split()
@@ -27,20 +32,28 @@ def send_instruccion(instrucciones):
             traduccion.append("%color%0")
         elif (div[0] == "Down"):
             traduccion.append("%color%f")
-        elif (div[0] == "Pos"):
-            traduccion.append("%color%f")
+        elif (div[0] == "PosX"):
+            traduccion.append("%posicion%"+ div[1] + "%f")
+        elif (div[0] == "PosY"):
+            traduccion.append("%posicion%f%-"+ div[1])
+        elif (div[0] == "Beginning"):
+            traduccion.append("%posicion%0%0")
+        elif ("Pos" in ins):
+            posXY = obtenerPosXY(ins)
+            traduccion.append("%posicion%"+posXY[0]+"%-"+posXY[1])
         else:
             traduccion.append("%apagar%0")
-
 instrucciones = ["iniciar", "UseColor 1", "ContinueRight 250", "ContinueUp 50", "ContinueLeft 250", "UseColor 2", "ContinueUp 50","ContinueRight 250", "ContinueUp 50", "ContinueLeft 250", "ContinueUp 50","ContinueRight 250", "ContinueDown 250","ContinueLeft 250","apagar", "apagar"]
 instrucciones2 = ["iniciar", "UseColor 2", "ContinueRight 250", "Up", "ContinueLeft 250", "Down", "ContinueRight 250", "Up", "ContinueLeft 250", "apagar", "apagar"]
+instrucciones3 = ["iniciar", "PosX 100", "PosY 100", "PosY 50", "PosX 50", "Beginning", "apagar", "apagar"]
 
-send_instruccion(instrucciones2)
+instrucciones4 = ["iniciar", "Pos(100,100)", "Beginning", "Beginning","apagar", "apagar"]
+send_instruccion(instrucciones4)
+
 print(traduccion)
 
 for i in traduccion:
     print (write_read(i))
-
 """while True:
     num = input("Enter a number: ") # Taking input from user
     value = write_read(num)
