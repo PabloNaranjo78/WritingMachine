@@ -18,8 +18,8 @@ if len(sys.argv) != 2:
 archivo_programa = sys.argv[1]
 
 # Se importan los tokens creados en el otro archivo
-from SyntaxLearning import tokens
-from SyntaxLearning import reserved
+from Syntax import tokens
+from Syntax import reserved
 
 # Diccionario de funciones almacenadas del programa para mapear
 funciones = {}
