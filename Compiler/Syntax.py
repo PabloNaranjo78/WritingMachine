@@ -1,11 +1,3 @@
-# Func for number len
-def numLen(n):
-    cont = 0
-    while num > 0:
-        num = num // 10
-        cont += 1
-#
-
 import ply.lex as lex
 from ply.lex import TOKEN
 
@@ -41,7 +33,13 @@ reserved = {
         'Mult' : 'MULT',
         'Div' : 'DIV',
         'Sum' : 'SUM',
-        'PrintLine' : 'PRINT'
+        'PrintLine' : 'PRINT',
+        'MAIN' : 'MAIN',
+        'PARA' : 'PARA',
+        'FIN' : 'FIN',
+
+        'TRUE' : 'TRUE' ,
+        'FALSE' : 'FALSE'
         }
 
 ## For operations
@@ -49,6 +47,14 @@ t_PLUS   = r'\+'
 t_MINUS  = r'\-'
 t_TIMES  = r'\*'
 t_DIVIDE = r'/'
+t_POW    = r'\^'
+
+## For comparisons
+t_GREATERTHAN  = r'\>'
+t_SMALLERTHAN  = r'\<'
+t_GREATEREQUAL = r'\>='
+t_SMALLEREQUAL = r'\<='
+t_EQUALS       = r'\='
 
 ## Parenthesis
 t_LPAREN = r'\('
@@ -62,59 +68,76 @@ t_COMMA = "\,"
 ## Semicolon
 t_SEMI_COLON = "\;"
 
-## True or False
-t_TRUE  = r'TRUE'
-t_FALSE = r'FALSE'
-
 ## Keywords
 tokens = [
+        'ID',
+        'COMMENT',
         'NUMBER',
         'PLUS',
         'MINUS',
         'TIMES',
         'DIVIDE',
+        'POW',
+        'GREATERTHAN',
+        'SMALLERTHAN',
+        'GREATEREQUAL',
+        'SMALLEREQUAL',
+        'EQUALS',
         'LPAREN',
         'RPAREN',
         'LSQUAREPAREN',
         'RSQUAREPAREN',
-        'ID',
         'COMMA',
-        'SEMI_COLON',
-        'TRUE',
-        'FALSE'
+        'SEMI_COLON'
         ] + list(reserved.values())
 
+# Sets how to declare a variable
+def t_ID(t):
+    r'[a-zA-Z_][a-zA-Z_0-9@]*'
+    t.type = reserved.get(t.value, 'ID')
+    return t
+
+# Sets the properties to declare a number
 def t_NUMBER(t):
     r'\d+'
     t.value = int(t.value)
     return t
 
-#@TOKEN(identifier)
-def t_ID(t):
-    r'[a-zA-Z_][a-zA-Z_0-9]*'
-    t.type = reserved.get(t.value, 'ID')
-    return t
-
+# Counts new lines
 def t_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
 
+# Ignores white spaces and tabs
 t_ignore = ' \t'
 
+# Defines comments structure
+def t_COMMENT(t):
+    r'\//.*'
+    return t
+
+# Handles errors
 def t_error(t):
     print("Illegal character '%s'" % t.value[0])
     t.lexer.skip(1)
 
-def t_COMMENT(t):
-    r'\#.*'
-    pass #No value returned. Token discarded
+# Handles end of file
+def t_eof(t):
+    return None
 
+# Builds the lexer
 lexer = lex.lex() 
+
+
+##  _____ ##
+## /TESTS ##
+## ------ ##
 
 # Test it out
 data = '''
 Def(var1, 3);
 ContinueUp 2;
+TRUE
 PosY 14;
 If Equal(2,2) [Beginning];
 PrintLine(var1);
@@ -138,12 +161,3 @@ while True:
 # .value: Valor en cuestion
 # .lineno: Numero de linea
 # .lexpos: Numero de posicion
-
-
-
-
-
-
-
-
-
