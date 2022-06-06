@@ -119,6 +119,8 @@ PosY 14;
 If Equal(2,2) [Beginning];
 PrintLine(var1);
 Sum(4,5);
+While [Equal(1,1)]
+[Up; PosY 90];
 '''
 
 # Give the lexer some input

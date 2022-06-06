@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter import filedialog
 
-
 class MainWindow:
 
     def __init__(self, master):
@@ -127,4 +126,14 @@ class MainWindow:
         self.console_text.see(END)
 
     def run(self):
-        print(self.editor_text.get(1.0, END))
+        data = self.editor_text.get(1.0, END)
+        file = open('Compiler/temp/tempCodigo','w')
+        file.write(data)
+        file.close()
+        import Compiler.ejecutar as exe
+        print("finalmente: codigo de arduino")
+        print(exe.dele())
+        #compilador
+        #compi devuelve [errores, prints, instrcciones]
+        #se imprimen los errores, si no hay, se imprimien los prints
+        #for para enviar a ardiuino

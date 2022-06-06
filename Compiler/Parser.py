@@ -2,6 +2,8 @@ import ply.yacc as yacc
 
 from Syntax import tokens
 
+instrucciones =[]
+
 ## Setting precedence order
 #precedence = (
 #    ('left', 'PLUS', 'MINUS'),
